@@ -1,0 +1,34 @@
+package templates
+
+import (
+	common "github.com/edwincarlflores/go-htmx/templates/common"
+	"github.com/edwincarlflores/go-htmx/types"
+)
+
+templ PollingPage() {
+	@common.Page("Polling") {
+		<h1>Quotes</h1>
+		<div hx-get="/demo/quotes" hx-trigger="every 4s" hx-swap="innerHTML" id="quotes-container"></div>
+	}
+}
+
+templ Card(quote types.Quote) {
+	<div class="max-w-sm rounded overflow-hidden shadow-lg m-3">
+		<div class="px-6 py-4">
+			<p class="text-gray-700 text-xl">
+				{ quote.Quote }
+			</p>
+		</div>
+		<div class="grid justify-items-end px-6 pt-4 pb-2">
+			<p class="font-bold text-xl">{ quote.Author }</p>
+		</div>
+	</div>
+}
+
+templ Quotes(quotes []types.Quote) {
+	<div class="columns-3">
+		for _, quote := range quotes {
+			@Card(quote)
+		}
+	</div>
+}
