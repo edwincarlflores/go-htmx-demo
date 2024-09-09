@@ -1,4 +1,4 @@
-# go-htmx
+# go-htmx-demo
 
 Boilerplate setup for building full stack web applications with Go, HTMX, echo, templ & tailwindcss
 
